@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sardi Soluções | Assistência Técnica</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #f0f4f8;         /* Fundo cinza azulado claro */
+      --primary: #0f2b4c;    /* Azul Marinho (Texto/Brand) */
+      --card-bg: #ffffff;    /* Fundo dos cartões */
+      --action: #25D366;     /* Verde WhatsApp Oficial */
+      --action-dark: #128C7E;
+      --text-gray: #64748b;
+      --radius: 16px;        /* Bordas bem arredondadas */
+      --shadow: 0 4px 20px rgba(15, 43, 76, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: var(--bg);
+      font-family: 'Poppins', sans-serif; /* Fonte moderna única */
+      color: var(--primary);
+      display: flex;
+      justify-content: center;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px; /* Um pouco mais largo para caber as infos */
+      padding: 20px;
+      padding-bottom: 80px; /* Espaço para o botão flutuante */
+    }
+
+    /* --- HEADER --- */
+    header {
+      text-align: center;
+      padding: 20px 0 30px;
+    }
+
+    .logo-placeholder {
+      width: 80px;
+      height: 80px;
+      background: #dbe5ef; /* Substitua pela sua imagem depois */
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: var(--primary);
+    }
+
+    header h1 {
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 14px;
+      color: var(--text-gray);
+      font-weight: 400;
+    }
+
+    /* --- HERO SECTION (OFERTA) --- */
+    .hero {
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      margin-bottom: 35px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .hero p {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .btn-hero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--action);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 14px 24px;
+      border-radius: 50px; /* Botão pílula */
+      font-size: 15px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s;
+      animation: pulse 2s infinite; /* Animação de pulsar */
+    }
+
+    .btn-hero:active {
+      transform: scale(0.96);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    /* --- CATEGORY CARDS (ILHAS) --- */
+    .category-group {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: var(--shadow);
+    }
+
+    .category-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+      padding-left: 5px;
+      border-left: 4px solid var(--primary); /* Detalhe visual */
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* --- ACCORDION ITEM --- */
+    .accordion-item {
+      border-bottom: 1px solid #eee;
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-header {
+      padding: 16px 5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Layout do texto dentro do header */
+    .header-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      width: 80%;
+    }
+
+    .service-name {
+      font-weight: 600;
+      font-size: 15px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .service-price {
+      font-size: 14px;
+      color: var(--action-dark);
+      font-weight: 700;
+    }
+
+    /* Badges (Etiquetas) */
+    .badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge.popular {
+      background-color: #e0f2f1;
+      color: #00695c;
+    }
+
+    .badge.essential {
+      background-color: #fff3e0;
+      color: #e65100;
+    }
+
+    /* Ícone da seta */
+    .accordion-header i.fa-chevron-down {
+      color: #cbd5e1;
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    /* --- CONTEÚDO EXPANSÍVEL --- */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background: #fafbfc; /* Fundo levemente diferente para o detalhe */
+      border-radius: 8px;
+    }
+
+    .accordion-content p {
+      font-size: 13px;
+      color: var(--text-gray);
+      padding: 15px;
+      line-height: 1.6;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 600px; /* Aumentei um pouco para caber o checklist novo */
+      margin-bottom: 15px;
+    }
+
+    .accordion-item.active .accordion-header i.fa-chevron-down {
+      transform: rotate(180deg);
+      color: var(--primary);
+    }
+
+    /* --- FAQ SECTION --- */
+    .faq-section {
+      margin-top: 40px;
+    }
+    
+    .faq-section .category-title {
+      border-left-color: var(--text-gray); /* Cor diferente para FAQ */
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      text-align: center;
+      padding: 40px 20px 20px;
+      color: var(--primary);
+    }
+    
+    .footer-contacts p {
+      margin: 8px 0;
+      font-weight: 500;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-btn {
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 24px;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* --- BOTÃO FLUTUANTE --- */
+    .fixed-whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--action);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .fixed-whatsapp:hover {
+      transform: scale(1.1);
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="logo-placeholder">
+      <i class="fas fa-laptop-medical"></i>
+    </div>
+    <h1>Sardi Soluções</h1>
+    <p>Especialistas em Hardware e Software</p>
+  </header>
+
+  <section class="hero">
+    <h2>Primeira vez aqui?</h2>
+    <p>Agende sua visita e ganhe o <strong>Diagnóstico Completo Grátis</strong> (Economia de R$ 80).</p>
+    <a class="btn-hero" href="https://wa.me/5571981527820?text=Olá, vim pelo site e quero meu diagnóstico grátis!" target="_blank">
+      <i class="fab fa-whatsapp"></i> QUERO MEU DIAGNÓSTICO
+    </a>
+  </section>
+
+  <div class="category-group">
+    <h3 class="category-title">Formatação e Sistema</h3>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Diagnóstico Completo</span>
+          <span class="service-price">R$ 80,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>
+          Entenda a saúde real do seu equipamento:<br><br>
+          • <strong>Análise de Stress:</strong> Testar CPU e GPU para ver se abrem o bico.<br>
+          • <strong>Saúde do Disco (S.M.A.R.T):</strong> Checar se o SSD/HD está morrendo.<br>
+          • <strong>Temperaturas:</strong> Ver se a pasta térmica já virou cimento.<br>
+          • <strong>Segurança:</strong> Verificação de Malware/Adware e vírus.<br>
+          • <strong>Checklist de Upgrades:</strong> Dizer exatamente o que falta para o PC voar.<br><br>
+        </p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Formatação Premium <span class="badge popular">Mais Pedido</span></span>
+          <span class="service-price">R$ 150,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p><strong>O pacote completo:</strong> Backup seguro dos seus arquivos, instalação limpa do Windows 10/11, todos os drivers, Pacote Office e otimização do sistema.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Formatação Simples</span>
+          <span class="service-price">R$ 100,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Instalação do Windows e programas básicos. Ideal para computadores novos ou quando você não precisa salvar nenhum arquivo.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Instalação de Softwares</span>
+          <span class="service-price">a partir de R$ 50,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Instalação de programas específicos (Photoshop, Corel, AutoCAD) ou renovação de licenças do Office/Antivírus.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="category-group">
+    <h3 class="category-title">Limpeza e Hardware</h3>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Limpeza Profunda <span class="badge essential">Essencial</span></span>
+          <span class="service-price">R$ 120,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Desmontagem técnica, remoção total de poeira, limpeza de coolers e <strong>troca da pasta térmica (Prata)</strong>. <br> Aumenta a vida útil do seu PC.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Limpeza Básica</span>
+          <span class="service-price">R$ 80,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Limpeza preventiva com jato de ar e higienização externa.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-group">
+    <h3 class="category-title">Peças e Montagem</h3>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Montagem de PC Completa</span>
+          <span class="service-price">R$ 250,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>
+      <strong>Hardware:</strong> Montagem técnica de todas as peças e Cable Management profissional.<br>
+      <strong>Software:</strong> Instalação do Windows, Drivers atualizados e atualização de BIOS.<br>
+      <strong>Testes:</strong> Stress test de 30min para garantir que nada vai superaquecer.
+    </p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Upgrades e Troca de Peças</span>
+          <span class="service-price">a partir de R$ 50,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Instalação técnica de componentes para melhorar o desempenho do seu PC ou Notebook.<br><br>
+      • <strong>Instalação Simples (R$ 50):</strong> Memória RAM ou HD/SSD secundário.<br>
+      • <strong>Instalação Complexa (R$ 80 - R$ 100):</strong> Fonte de alimentação, Placa de Vídeo, Air Cooler/Water Cooler ou troca de Gabinete.</p>
+      </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-group">
+    <h3 class="category-title">Assessoria</h3>
+    
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info">
+          <span class="service-name">Consultoria de Compra</span>
+          <span class="service-price">R$ 50,00</span>
+        </div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Eu indico as melhores peças ou notebook para seu orçamento. <strong>O valor é descontado se você fechar a montagem comigo!</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-group faq-section">
+    <h3 class="category-title">Dúvidas Comuns</h3>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info"><span class="service-name">Quanto tempo demora?</span></div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Formatações levam em média de 1 a 2 dias úteis. Diagnósticos e limpezas podem variar conforme a complexidade.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info"><span class="service-name">Buscam em casa?</span></div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Sim, atendemos a domicílio para serviços pontuais, como formatação e upgrades simples (SSD, HD, RAM). <br> Serviços mais complexos são realizados em bancada, para garantir maior cuidado e qualidade no atendimento. Consulte via WhatsApp.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <div class="header-info"><span class="service-name">Aceitam cartão?</span></div>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+      <div class="accordion-content">
+        <p>Sim! Aceitamos PIX, Dinheiro e Cartão de Crédito/Débito.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-contacts">
+      <p><i class="fas fa-phone-alt"></i> (71) 98152-7820</p>
+      <p><i class="fas fa-envelope"></i> sardi.iuri@gmail.com</p>
+    </div>
+    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+    <br><br>
+    <small style="opacity: 0.5;">Sardi Soluções © 2026</small>
+  </footer>
+
+</div>
+
+<a class="fixed-whatsapp" href="https://wa.me/5571981527820" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      if (!isActive) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
