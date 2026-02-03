@@ -53,17 +53,23 @@
     }
 
     .logo-placeholder {
-      width: 80px;
-      height: 80px;
-      background: #dbe5ef; /* Substitua pela sua imagem depois */
-      border-radius: 50%;
-      margin: 0 auto 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      color: var(--primary);
-    }
+  width: 80px;
+  height: 80px;
+  background: var(--primary); /* Usa o azul #0f2b4c do seu root */
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Garante que a imagem não saia da borda redonda */
+  box-shadow: var(--shadow);
+}
+
+.minha-logo {
+  width: 70%; /* Ajustado para dar um respiro dentro do círculo */
+  height: 70%;
+  object-fit: contain; /* Mantém as proporções do SS sem achatar */
+}
 
     header h1 {
       font-size: 26px;
@@ -312,15 +318,17 @@
 
   <header>
     <div class="logo-placeholder">
-      <i class="fas fa-laptop-medical"></i>
-    </div>
+    <img src="assets/logo-ss.png" alt="Sardi Soluções" class="minha-logo">
+  </div>
     <h1>Sardi Soluções</h1>
+    <h3>Assistência Técnica</h3>
+    <br>
     <p>Especialistas em Hardware e Software</p>
   </header>
 
   <section class="hero">
     <h2>Primeira vez aqui?</h2>
-    <p>Agende sua visita e ganhe o <strong>Diagnóstico Completo Grátis</strong> (Economia de R$ 80).</p>
+    <p>Realize seu serviço e ganhe o <strong>Diagnóstico Completo Grátis</strong></p>
     <a class="btn-hero" href="https://wa.me/5571981527820?text=Olá, vim pelo site e quero meu diagnóstico grátis!" target="_blank">
       <i class="fab fa-whatsapp"></i> QUERO MEU DIAGNÓSTICO
     </a>
@@ -357,7 +365,7 @@
         <i class="fas fa-chevron-down"></i>
       </div>
       <div class="accordion-content">
-        <p><strong>O pacote completo:</strong> Backup seguro dos seus arquivos, instalação limpa do Windows 10/11, todos os drivers, Pacote Office e otimização do sistema.</p>
+        <p><strong>Pacote completo:</strong> Backup seguro dos seus arquivos, instalação limpa do Windows 10/11, todos os drivers, Pacote Office e otimização do sistema.</p>
       </div>
     </div>
 
@@ -492,7 +500,7 @@
         <i class="fas fa-chevron-down"></i>
       </div>
       <div class="accordion-content">
-        <p>Sim, atendemos a domicílio para serviços pontuais, como formatação e upgrades simples (SSD, HD, RAM). <br> Serviços mais complexos são realizados em bancada, para garantir maior cuidado e qualidade no atendimento. Consulte via WhatsApp.</p>
+        <p>Sim, atendemos a domicílio para serviços pontuais, como formatação e upgrades simples (SSD, HD, RAM). <br> Serviços mais complexos são realizados em bancada, para garantir maior cuidado e qualidade no atendimento. <strong>Consulte via WhatsApp.</strong></p>
       </div>
     </div>
 
@@ -509,17 +517,18 @@
 
   <footer>
     <div class="footer-contacts">
+      <p><i class="fas fa-map-marker-alt"></i> Atendimento em São Rafael, Salvador</p>
       <p><i class="fas fa-phone-alt"></i> (71) 98152-7820</p>
       <p><i class="fas fa-envelope"></i> sardi.iuri@gmail.com</p>
     </div>
-    <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.instagram.com/sardi.solucoes?igsh=MXRwMGhnMWpweTNvaA==" class="social-btn"><i class="fab fa-instagram"></i></a>
     <br><br>
     <small style="opacity: 0.5;">Sardi Soluções © 2026</small>
   </footer>
 
 </div>
 
-<a class="fixed-whatsapp" href="https://wa.me/5571981527820" target="_blank">
+<a class="fixed-whatsapp" href="https://wa.me/5571981527820?text=Olá, vim pelo site e gostaria de agendar um serviço." target="_blank">
   <i class="fab fa-whatsapp"></i>
 </a>
 
